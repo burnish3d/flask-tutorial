@@ -1,8 +1,7 @@
 
-workflow will typically be
+#workflow will typically be
 
-git push heroku heroku-deploy:main
-heroku ps:scale web=1
-heroku open
-
+git push heroku heroku-deploy:main && \
+heroku ps:scale web=1 && \
+heroku open && \
 heroku logs --tail
