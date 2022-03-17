@@ -1,0 +1,39 @@
+tutorial project from the flask website
+
+notes on file structure
+- Flask apps are set up to be Python packages with __init__.py modules
+- instance/ appears to be where instance specific files are being located, in this case an SQLite file
+- templates are where jinja html templates are stored, 
+'The base template is directly in the templates directory.
+To keep the others organized, the templates for a blueprint will be placed in a directory with the same name as the blueprint.'
+
+- CSS gets added to the static directory because it will not change, unlike a template
+- other things like JS functions or a logo image might be static
+They are all placed under the flaskr/static directory and referenced with url_for('static', filename='...').
+
+Making the project installable allows you to run pip install -e . to install 
+the project into the local environemnt in editable mode, which allows you to invoke 'flask run'
+from anywhere (not just the root of the project directory) to start the server. still have
+to set environment variables. Only need to reinstall if metadata changes, such as dependencies.
+
+Run on another machine by producing a wheel as python3 setup.py bdist_wheel
+Get that wheel onto that other machine
+Then pip install <wheel file name>
+Then run init-db to create the database in the instance folder
+Don't forget to set environment variables
+Note - when Flask detects that its installed (not in editable mode) it uses 
+a different directory for the instanc folder, will be found at
+venv/var/flaskr-instance instead.. evidently.
+
+You can use the following command to output a random secret key:
+python -c 'import secrets; print(secrets.token_hex())'
+https://flask.palletsprojects.com/en/2.0.x/tutorial/deploy/ has more notes on setting up a config.py and secret keys in this fashion
+Note: this tutorial project requires only that SECRET_KEY be set
+
+Use a production WSGI server, will need to be configured to import and call 
+the application factory to get an application object, https://flask.palletsprojects.com/en/2.0.x/deploying/ has options and details
+
+https://flask.palletsprojects.com/en/2.0.x/tutorial/next/ KEEP DEVELOPING
+page has ideas for additional features to add
+
+Can start server with `flask run` OR with `waitress-serve --call 'flaskr:create_app'`
