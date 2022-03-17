@@ -56,3 +56,14 @@ handy for getting logs
 NOTE - evidently waitress doesn't support SSL, so will need a reverse proxy for that
 
 OH BUT IT DONT MATTER HEROKU PROVIDES IT ANYWAY?!
+current problem - how to init db?
+
+#need this for wsl compatability
+export BROWSER=wslview 
+
+#workflow will typically be
+
+git push heroku heroku-deploy:main && \
+heroku ps:scale web=1 && \
+heroku open && \
+heroku logs --tail
