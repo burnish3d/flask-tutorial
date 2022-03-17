@@ -52,4 +52,7 @@ if successful open app in browser by invoking
 `heroku logs --tail`
 handy for getting logs
 
-current problem - how to init db?
+
+NOTE - evidently waitress doesn't support SSL, so will need a reverse proxy for that
+
+OH BUT IT DONT MATTER HEROKU PROVIDES IT ANYWAY?!
