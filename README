@@ -25,6 +25,11 @@ Note - when Flask detects that its installed (not in editable mode) it uses
 a different directory for the instanc folder, will be found at
 venv/var/flaskr-instance instead.. evidently.
 
+~~~~~~~~~~~~~~~~~ DONT FORGET
+export FLASK_APP=flaskr
+flask init-db
+~~~~~~~~~~~~~~~~~~~~~ INIT DB WITH THOSE COMMANDS, the click module registers CLI commands with the flask command
+
 You can use the following command to output a random secret key:
 python -c 'import secrets; print(secrets.token_hex())'
 https://flask.palletsprojects.com/en/2.0.x/tutorial/deploy/ has more notes on setting up a config.py and secret keys in this fashion
@@ -37,3 +42,14 @@ https://flask.palletsprojects.com/en/2.0.x/tutorial/next/ KEEP DEVELOPING
 page has ideas for additional features to add
 
 Can start server with `flask run` OR with `waitress-serve --call 'flaskr:create_app'`
+
+Push to heroku by invoking
+`git push heroku heroku-deploy:main`
+
+if successful open app in browser by invoking
+`heroku open`
+
+`heroku logs --tail`
+handy for getting logs
+
+current problem - how to init db?
